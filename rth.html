@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LPM RTH Road to Healing Portal</title>
+<style>
+  :root{
+    --lpm-brown:#3b2417;
+    --lpm-brown-2:#5b371f;
+    --lpm-gold:#c49a3a;
+    --lpm-soft-gold:#f5e3b3;
+    --lpm-cream:#fff9ed;
+    --lpm-card:#fffdf7;
+    --lpm-green:#2f6b3f;
+    --lpm-red:#8f2f22;
+    --lpm-blue:#244d73;
+    --lpm-shadow:0 10px 30px rgba(59,36,23,.16);
+    --radius:22px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(196,154,58,.20), transparent 34%),
+      linear-gradient(180deg, #fff9ed 0%, #f6ead0 100%);
+    color:var(--lpm-brown);
+    line-height:1.45;
+  }
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(59,36,23,.96);
+    color:white;
+    border-bottom:4px solid var(--lpm-gold);
+    box-shadow:0 4px 18px rgba(0,0,0,.22);
+  }
+  .tabs{
+    display:flex;
+    gap:8px;
+    max-width:1100px;
+    margin:0 auto;
+    padding:10px;
+    overflow:auto;
+  }
+  .tabs a, .tabs button{
+    appearance:none;
+    border:1px solid rgba(255,255,255,.25);
+    background:#6a4528;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 13px;
+    border-radius:999px;
+    white-space:nowrap;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+  }
+  .tabs a:hover, .tabs button:hover{background:#805732}
+  header{
+    max-width:1100px;
+    margin:0 auto;
+    padding:28px 18px 20px;
+  }
+  .hero{
+    background:linear-gradient(135deg, var(--lpm-brown), var(--lpm-brown-2));
+    color:white;
+    border-radius:0 0 32px 32px;
+    margin-bottom:20px;
+    box-shadow:var(--lpm-shadow);
+  }
+  .brand{
+    letter-spacing:.08em;
+    color:var(--lpm-soft-gold);
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:14px;
+  }
+  h1{
+    margin:8px 0 10px;
+    font-size:clamp(30px, 5vw, 54px);
+    line-height:1.04;
+  }
+  .subtitle{
+    font-size:clamp(17px, 2.4vw, 22px);
+    max-width:820px;
+    color:#fff6dd;
+  }
+  .notice{
+    margin-top:16px;
+    border:1px solid rgba(245,227,179,.5);
+    background:rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:14px 16px;
+    font-size:16px;
+  }
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 14px 36px;
+  }
+  section{
+    margin:18px 0;
+    background:rgba(255,255,255,.68);
+    border:1px solid rgba(196,154,58,.38);
+    border-radius:var(--radius);
+    box-shadow:var(--lpm-shadow);
+    padding:18px;
+  }
+  h2{
+    margin:0 0 12px;
+    font-size:clamp(24px, 3.8vw, 34px);
+    color:var(--lpm-brown);
+  }
+  h3{
+    margin:0 0 9px;
+    font-size:clamp(19px, 3vw, 25px);
+  }
+  .simple-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:12px;
+  }
+  .step-card{
+    background:var(--lpm-card);
+    border:2px solid rgba(196,154,58,.42);
+    border-radius:20px;
+    padding:15px;
+  }
+  .step-num{
+    display:inline-flex;
+    width:32px;
+    height:32px;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--lpm-gold);
+    color:var(--lpm-brown);
+    font-weight:900;
+    margin-bottom:8px;
+  }
+  .question-card{
+    background:var(--lpm-card);
+    border:2px solid rgba(196,154,58,.45);
+    border-radius:24px;
+    padding:16px;
+    margin:15px 0;
+  }
+  .question-head{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    justify-content:space-between;
+  }
+  .qnum{
+    background:var(--lpm-brown);
+    color:#fff;
+    border-radius:999px;
+    padding:6px 12px;
+    font-weight:900;
+    white-space:nowrap;
+  }
+  .qtext{
+    flex:1;
+    font-size:clamp(20px, 3.5vw, 29px);
+    font-weight:850;
+    line-height:1.16;
+  }
+  .voice-btn, .primary-btn, .small-btn{
+    border:0;
+    border-radius:16px;
+    background:var(--lpm-gold);
+    color:var(--lpm-brown);
+    padding:12px 14px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(59,36,23,.18);
+  }
+  .voice-btn{min-width:84px}
+  .voice-btn:active, .primary-btn:active, .small-btn:active{transform:translateY(1px)}
+  .answers{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:11px;
+    margin-top:14px;
+  }
+  .answer{
+    position:relative;
+  }
+  .answer input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  .answer label{
+    display:block;
+    height:100%;
+    background:#fffaf0;
+    border:2px solid #e1c783;
+    border-radius:20px;
+    padding:14px;
+    font-weight:750;
+    cursor:pointer;
+    min-height:118px;
+  }
+  .answer .letter{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#f0dfaa;
+    color:var(--lpm-brown);
+    font-weight:900;
+    margin-bottom:7px;
+  }
+  .answer .big{
+    display:block;
+    font-size:18px;
+    margin-bottom:5px;
+  }
+  .answer .small{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+    color:#6c4c35;
+  }
+  .answer input:checked + label{
+    border-color:var(--lpm-green);
+    background:#edf8ef;
+    box-shadow:0 0 0 4px rgba(47,107,63,.12);
+  }
+  .actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+    margin-top:16px;
+  }
+  .primary-btn{
+    background:var(--lpm-green);
+    color:#fff;
+    font-size:19px;
+    padding:14px 18px;
+  }
+  .small-btn{
+    background:#fff5d7;
+    border:2px solid var(--lpm-gold);
+  }
+  .result{
+    display:none;
+    border:3px solid var(--lpm-green);
+    background:linear-gradient(180deg, #f5fff6, #fffdf5);
+  }
+  .result.show{display:block}
+  .recommend-line{
+    font-size:clamp(23px, 4vw, 37px);
+    line-height:1.15;
+    font-weight:950;
+    color:var(--lpm-green);
+    margin:8px 0 12px;
+  }
+  .target-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin:12px 0;
+  }
+  .target{
+    border-radius:22px;
+    padding:16px;
+    background:#fff;
+    border:2px solid rgba(47,107,63,.3);
+  }
+  .badge{
+    display:inline-block;
+    background:var(--lpm-brown);
+    color:#fff;
+    border-radius:999px;
+    padding:6px 11px;
+    font-weight:900;
+    margin-bottom:8px;
+  }
+  .need-answer{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .mini{
+    background:#fff8e4;
+    border:1px solid #ead392;
+    border-radius:16px;
+    padding:12px;
+  }
+  .scriptures{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+  }
+  .scriptures a{
+    display:inline-block;
+    text-decoration:none;
+    border-radius:999px;
+    padding:8px 10px;
+    background:#e9f0f7;
+    border:1px solid #9ab1c9;
+    color:#173d61;
+    font-weight:800;
+  }
+  .safety{
+    background:#fff0ee;
+    border:2px solid #e0a09b;
+    border-radius:18px;
+    padding:14px;
+    margin-top:12px;
+    color:#5b1d16;
+    font-weight:700;
+  }
+  .footer-note{
+    text-align:center;
+    color:#6b4a30;
+    font-size:14px;
+    padding:20px 6px;
+  }
+
+  .listen-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:12px;
+  }
+  .hear-result-btn{
+    border:0;
+    border-radius:999px;
+    background:#2f6b3f;
+    color:#fff;
+    padding:10px 12px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .hear-scripture-btn{
+    border:2px solid #9ab1c9;
+    border-radius:999px;
+    background:#eef6ff;
+    color:#173d61;
+    padding:8px 10px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .scripture-list{
+    margin-top:12px;
+    display:grid;
+    gap:10px;
+  }
+  .scripture-line{
+    background:#f7fbff;
+    border:1px solid #b9c9d9;
+    border-radius:16px;
+    padding:10px 12px;
+  }
+  .scripture-line strong{color:#173d61}
+  .verse-text{
+    display:block;
+    margin-top:4px;
+    color:#4d3827;
+    font-size:14px;
+  }
+  .audio-note{
+    background:#eff8f0;
+    border:1px solid rgba(47,107,63,.35);
+    border-radius:16px;
+    padding:11px 13px;
+    margin-top:10px;
+    font-weight:750;
+  }
+
+  @media(max-width:800px){
+    .simple-grid,.answers,.target-grid,.need-answer{
+      grid-template-columns:1fr;
+    }
+    .question-head{
+      flex-wrap:wrap;
+    }
+    .voice-btn{
+      width:100%;
+      font-size:17px;
+    }
+    section{padding:14px}
+    .tabs a,.tabs button{font-size:14px;padding:9px 11px}
+    .answer label{min-height:auto}
+  }
+  @media print{
+    .topbar, .actions .small-btn, .voice-btn{display:none!important}
+    body{background:white}
+    section,.hero{box-shadow:none}
+    .result{display:block!important}
+  }
+</style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Quick navigation">
+    <div class="tabs">
+      <a href="#start">Start</a>
+      <a href="#questions">4 Questions</a>
+      <a href="#resultBox">Results</a>
+      <a href="#scripture">Scripture Help</a>
+      <button type="button" onclick="stopSpeaking()">Stop Reading</button>
+      <button type="button" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </nav>
+
+  <div class="hero" id="start">
+    <header>
+      <div class="brand">Living Pages Ministry • RTH Road to Healing</div>
+      <h1>QuickStart 4-Question Analyzer</h1>
+      <p class="subtitle">A gentle first step for nervous first-time users. Answer only 4 questions. Then receive a clear recommendation: <strong>“Target these 2 areas first.”</strong> The findings and scriptures can also be read aloud.</p>
+      <div class="notice">
+        This is a ministry-style reflection tool, not a medical diagnosis. If someone is in immediate danger, call emergency services. In the U.S., call or text <strong>988</strong> for crisis support.
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <section>
+      <h2>How this works</h2>
+      <div class="simple-grid">
+        <div class="step-card"><span class="step-num">1</span><h3>Hear or read</h3><p>Tap “Hear Question” or simply read it on the screen.</p></div>
+        <div class="step-card"><span class="step-num">2</span><h3>Pick one answer</h3><p>Each question has only 3 simple choices.</p></div>
+        <div class="step-card"><span class="step-num">3</span><h3>Get 2 targets</h3><p>The summary tells you the first 2 areas to work on.</p></div>
+      </div>
+    </section>
+
+    <section id="questions">
+      <h2>Answer these 4 questions</h2>
+      <form id="rthForm">
+        <div class="question-card" data-question="1">
+          <div class="question-head">
+            <span class="qnum">Q1</span>
+            <div class="qtext">What feels heaviest right now?</div>
+            <button class="voice-btn" type="button" onclick="speakQuestion(0)">🔊 Hear Question</button>
+          </div>
+          <div class="answers">
+            <div class="answer">
+              <input id="q1a" name="q1" type="radio" value="hurt_pain" required>
+              <label for="q1a"><span class="letter">A</span><span class="big">Old pain or loss</span><span class="small">Rejection, grief, abuse, abandonment, betrayal.</span></label>
+            </div>
+            <div class="answer">
+              <input id="q1b" name="q1" type="radio" value="habit_escape">
+              <label for="q1b"><span class="letter">B</span><span class="big">A repeated behavior</span><span class="small">Something I keep doing even when it hurts me.</span></label>
+            </div>
+            <div class="answer">
+              <input id="q1c" name="q1" type="radio" value="hangup_control">
+              <label for="q1c"><span class="letter">C</span><span class="big">Inside pressure</span><span class="small">Anger, fear, anxiety, shame, or control.</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card" data-question="2">
+          <div class="question-head">
+            <span class="qnum">Q2</span>
+            <div class="qtext">What usually sets it off?</div>
+            <button class="voice-btn" type="button" onclick="speakQuestion(1)">🔊 Hear Question</button>
+          </div>
+          <div class="answers">
+            <div class="answer">
+              <input id="q2a" name="q2" type="radio" value="rejection_abandonment" required>
+              <label for="q2a"><span class="letter">A</span><span class="big">Feeling rejected</span><span class="small">Left out, criticized, ignored, or not wanted.</span></label>
+            </div>
+            <div class="answer">
+              <input id="q2b" name="q2" type="radio" value="isolation_escape">
+              <label for="q2b"><span class="letter">B</span><span class="big">Stress or being alone</span><span class="small">I escape, shut down, hide, or reach for comfort.</span></label>
+            </div>
+            <div class="answer">
+              <input id="q2c" name="q2" type="radio" value="anger_anxiety_control">
+              <label for="q2c"><span class="letter">C</span><span class="big">Fear or control</span><span class="small">I react, worry, argue, control, or spiral.</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card" data-question="3">
+          <div class="question-head">
+            <span class="qnum">Q3</span>
+            <div class="qtext">What do you need most today?</div>
+            <button class="voice-btn" type="button" onclick="speakQuestion(2)">🔊 Hear Question</button>
+          </div>
+          <div class="answers">
+            <div class="answer">
+              <input id="q3a" name="q3" type="radio" value="healing_comfort" required>
+              <label for="q3a"><span class="letter">A</span><span class="big">Healing and comfort</span><span class="small">Help with pain, grief, shame, or forgiveness.</span></label>
+            </div>
+            <div class="answer">
+              <input id="q3b" name="q3" type="radio" value="accountability_boundaries">
+              <label for="q3b"><span class="letter">B</span><span class="big">Accountability</span><span class="small">Boundaries, support, and a next right action.</span></label>
+            </div>
+            <div class="answer">
+              <input id="q3c" name="q3" type="radio" value="peace_surrender">
+              <label for="q3c"><span class="letter">C</span><span class="big">Peace and surrender</span><span class="small">Help calming my thoughts and trusting God.</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card" data-question="4">
+          <div class="question-head">
+            <span class="qnum">Q4</span>
+            <div class="qtext">What is causing the most damage right now?</div>
+            <button class="voice-btn" type="button" onclick="speakQuestion(3)">🔊 Hear Question</button>
+          </div>
+          <div class="answers">
+            <div class="answer">
+              <input id="q4a" name="q4" type="radio" value="relationship_wounds" required>
+              <label for="q4a"><span class="letter">A</span><span class="big">Relationship wounds</span><span class="small">Distance, distrust, sadness, or old pain returning.</span></label>
+            </div>
+            <div class="answer">
+              <input id="q4b" name="q4" type="radio" value="active_habit">
+              <label for="q4b"><span class="letter">B</span><span class="big">A habit pattern</span><span class="small">Time, money, health, secrecy, or repeated consequences.</span></label>
+            </div>
+            <div class="answer">
+              <input id="q4c" name="q4" type="radio" value="conflict_reaction">
+              <label for="q4c"><span class="letter">C</span><span class="big">Reactions and conflict</span><span class="small">Anger, fear, control, blame, or emotional blowups.</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary-btn" type="submit">Show My 2 Recommended Target Areas</button>
+          <button class="small-btn" type="button" onclick="readAllQuestions()">🔊 Hear All 4 Questions</button>
+          <button class="small-btn" type="reset" onclick="resetResults()">Start Over</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="resultBox" class="result" aria-live="polite">
+      <h2>Your Road to Healing QuickStart Summary</h2>
+      <div class="audio-note">Tap the green buttons to hear your findings and the scripture words aloud.</div>
+      <div class="recommend-line" id="recommendLine">I recommend targeting these 2 areas first:</div>
+      <div class="target-grid" id="targetGrid"></div>
+
+      <div class="need-answer">
+        <div class="mini">
+          <h3>Next simple step</h3>
+          <p id="nextStep">Choose one safe person, group leader, sponsor, pastor, mentor, or counselor to talk with about the first target area.</p>
+        </div>
+        <div class="mini">
+          <h3>Keep it gentle</h3>
+          <p>Do not try to fix everything today. This is the first step on the Road to Healing, not the whole journey.</p>
+        </div>
+      </div>
+
+      <div class="safety">
+        If your answers point to immediate danger, self-harm risk, violence, abuse, or unsafe living conditions, make safety the first step. Call emergency services or 988 in the U.S. for crisis support.
+      </div>
+
+      <div class="actions">
+        <button class="primary-btn" type="button" onclick="speakFullResults()">🔊 Read Full Results + Scriptures</button>
+        <button class="small-btn" type="button" onclick="speakResults()">🔊 Read Recommendation Only</button>
+        <button class="small-btn" type="button" onclick="stopSpeaking()">Stop Reading</button>
+        <button class="small-btn" type="button" onclick="window.print()">Print / Save PDF</button>
+      </div>
+    </section>
+
+    <section id="scripture">
+      <h2>Scripture Help</h2>
+      <p>These links are included in the result cards when they match your recommended target areas.</p>
+      <div class="actions"><button class="small-btn" type="button" onclick="speakCommonScriptureHelp()">🔊 Hear Common Scripture Help</button><button class="small-btn" type="button" onclick="stopSpeaking()">Stop Reading</button></div>
+      <div class="scriptures">
+        <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=Psalm%2034%3A18&version=KJV">Psalm 34:18</a>
+        <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=Matthew%2011%3A28-30&version=KJV">Matthew 11:28-30</a>
+        <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=1%20Corinthians%2010%3A13&version=KJV">1 Corinthians 10:13</a>
+        <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=Galatians%206%3A2&version=KJV">Galatians 6:2</a>
+        <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=Philippians%204%3A6-7&version=KJV">Philippians 4:6-7</a>
+        <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=2%20Timothy%201%3A7&version=KJV">2 Timothy 1:7</a>
+        <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=James%201%3A19-20&version=KJV">James 1:19-20</a>
+        <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=Proverbs%203%3A5-6&version=KJV">Proverbs 3:5-6</a>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      Living Pages Ministry • RTH Road to Healing • QuickStart Analyzer v3 • Hearable Results + Scripture
+    </div>
+  </main>
+
+<script>
+const questionsForVoice = [
+  "Question 1. What feels heaviest right now? A. Old pain or loss. B. A repeated behavior. C. Inside pressure.",
+  "Question 2. What usually sets it off? A. Feeling rejected. B. Stress or being alone. C. Fear or control.",
+  "Question 3. What do you need most today? A. Healing and comfort. B. Accountability. C. Peace and surrender.",
+  "Question 4. What is causing the most damage right now? A. Relationship wounds. B. A habit pattern. C. Reactions and conflict."
+];
+
+const choiceScores = {
+  hurt_pain: { "Past Pain / Rejection / Grief":3, "Safety and Comfort":1 },
+  habit_escape: { "Habit Accountability / Repeating Behavior":3, "Isolation / Escape Pattern":1 },
+  hangup_control: { "Anxiety / Anger / Control":3, "Peace and Surrender":1 },
+  rejection_abandonment: { "Rejection / Abandonment":3, "Past Pain / Rejection / Grief":1 },
+  isolation_escape: { "Isolation / Escape Pattern":3, "Habit Accountability / Repeating Behavior":1 },
+  anger_anxiety_control: { "Anxiety / Anger / Control":3, "Control / Surrender":1 },
+  healing_comfort: { "Forgiveness / Grief Healing":3, "Past Pain / Rejection / Grief":1 },
+  accountability_boundaries: { "Boundaries / Accountability":3, "Habit Accountability / Repeating Behavior":1 },
+  peace_surrender: { "Peace / Surrender / Shame":3, "Anxiety / Anger / Control":1 },
+  relationship_wounds: { "Relationship Wounds":3, "Rejection / Abandonment":1 },
+  active_habit: { "Active Habit Pattern":3, "Boundaries / Accountability":1 },
+  conflict_reaction: { "Anger / Fear / Control":3, "Anxiety / Anger / Control":1 }
+};
+
+const targetInfo = {
+  "Past Pain / Rejection / Grief": {
+    "need": "Comfort, safety, and a gentle place to name the hurt.",
+    "answer": "Start with the hurt itself before judging your reactions to it.",
+    "scriptures": [
+      [
+        "Psalm 34:18",
+        "https://www.biblegateway.com/passage/?search=Psalm%2034%3A18&version=KJV",
+        "The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit."
+      ],
+      [
+        "Matthew 11:28-30",
+        "https://www.biblegateway.com/passage/?search=Matthew%2011%3A28-30&version=KJV",
+        "Come unto me, all ye that labour and are heavy laden, and I will give you rest. Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls. For my yoke is easy, and my burden is light."
+      ]
+    ]
+  },
+  "Rejection / Abandonment": {
+    "need": "Reassurance, belonging, and help separating old rejection from today.",
+    "answer": "Work on the rejection wound first so later habits and reactions make more sense.",
+    "scriptures": [
+      [
+        "Psalm 27:10",
+        "https://www.biblegateway.com/passage/?search=Psalm%2027%3A10&version=KJV",
+        "When my father and my mother forsake me, then the LORD will take me up."
+      ],
+      [
+        "Romans 8:38-39",
+        "https://www.biblegateway.com/passage/?search=Romans%208%3A38-39&version=KJV",
+        "For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come, Nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord."
+      ]
+    ]
+  },
+  "Forgiveness / Grief Healing": {
+    "need": "Permission to grieve, release bitterness, and walk forward slowly.",
+    "answer": "Do not rush the heart. Begin with honest prayer and safe support.",
+    "scriptures": [
+      [
+        "Psalm 147:3",
+        "https://www.biblegateway.com/passage/?search=Psalm%20147%3A3&version=KJV",
+        "He healeth the broken in heart, and bindeth up their wounds."
+      ],
+      [
+        "Ephesians 4:31-32",
+        "https://www.biblegateway.com/passage/?search=Ephesians%204%3A31-32&version=KJV",
+        "Let all bitterness, and wrath, and anger, and clamour, and evil speaking, be put away from you, with all malice: And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ's sake hath forgiven you."
+      ]
+    ]
+  },
+  "Relationship Wounds": {
+    "need": "Clarity, boundaries, and help understanding the wound pattern.",
+    "answer": "Name the wound, then decide what safe support or boundary is needed next.",
+    "scriptures": [
+      [
+        "Proverbs 4:23",
+        "https://www.biblegateway.com/passage/?search=Proverbs%204%3A23&version=KJV",
+        "Keep thy heart with all diligence; for out of it are the issues of life."
+      ],
+      [
+        "Galatians 6:2",
+        "https://www.biblegateway.com/passage/?search=Galatians%206%3A2&version=KJV",
+        "Bear ye one another's burdens, and so fulfil the law of Christ."
+      ]
+    ]
+  },
+  "Habit Accountability / Repeating Behavior": {
+    "need": "Accountability, practical support, and a small next right action.",
+    "answer": "Attack the repeating pattern early, before it creates more shame or consequences.",
+    "scriptures": [
+      [
+        "1 Corinthians 10:13",
+        "https://www.biblegateway.com/passage/?search=1%20Corinthians%2010%3A13&version=KJV",
+        "There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape, that ye may be able to bear it."
+      ],
+      [
+        "James 5:16",
+        "https://www.biblegateway.com/passage/?search=James%205%3A16&version=KJV",
+        "Confess your faults one to another, and pray one for another, that ye may be healed. The effectual fervent prayer of a righteous man availeth much."
+      ]
+    ]
+  },
+  "Isolation / Escape Pattern": {
+    "need": "Connection, routine, and a replacement response when stress hits.",
+    "answer": "Break isolation gently: one call, one meeting, one honest sentence.",
+    "scriptures": [
+      [
+        "Ecclesiastes 4:9-10",
+        "https://www.biblegateway.com/passage/?search=Ecclesiastes%204%3A9-10&version=KJV",
+        "Two are better than one; because they have a good reward for their labour. For if they fall, the one will lift up his fellow: but woe to him that is alone when he falleth; for he hath not another to help him up."
+      ],
+      [
+        "Hebrews 10:24-25",
+        "https://www.biblegateway.com/passage/?search=Hebrews%2010%3A24-25&version=KJV",
+        "And let us consider one another to provoke unto love and to good works: Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another: and so much the more, as ye see the day approaching."
+      ]
+    ]
+  },
+  "Boundaries / Accountability": {
+    "need": "A safe plan, clear limits, and someone who checks in.",
+    "answer": "Use support and boundaries before the next trigger arrives.",
+    "scriptures": [
+      [
+        "Galatians 6:2",
+        "https://www.biblegateway.com/passage/?search=Galatians%206%3A2&version=KJV",
+        "Bear ye one another's burdens, and so fulfil the law of Christ."
+      ],
+      [
+        "Proverbs 11:14",
+        "https://www.biblegateway.com/passage/?search=Proverbs%2011%3A14&version=KJV",
+        "Where no counsel is, the people fall: but in the multitude of counsellors there is safety."
+      ]
+    ]
+  },
+  "Active Habit Pattern": {
+    "need": "Immediate support, fewer opportunities to repeat, and honest confession.",
+    "answer": "Make the next 24 hours safer and less private around the habit.",
+    "scriptures": [
+      [
+        "Romans 6:12-14",
+        "https://www.biblegateway.com/passage/?search=Romans%206%3A12-14&version=KJV",
+        "Let not sin therefore reign in your mortal body, that ye should obey it in the lusts thereof. Neither yield ye your members as instruments of unrighteousness unto sin: but yield yourselves unto God, as those that are alive from the dead, and your members as instruments of righteousness unto God. For sin shall not have dominion over you: for ye are not under the law, but under grace."
+      ],
+      [
+        "1 Corinthians 10:13",
+        "https://www.biblegateway.com/passage/?search=1%20Corinthians%2010%3A13&version=KJV",
+        "There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape, that ye may be able to bear it."
+      ]
+    ]
+  },
+  "Anxiety / Anger / Control": {
+    "need": "Peace, surrender, and help slowing the reaction before it controls the moment.",
+    "answer": "Work on the inner alarm system: fear, anger, control, and worry.",
+    "scriptures": [
+      [
+        "Philippians 4:6-7",
+        "https://www.biblegateway.com/passage/?search=Philippians%204%3A6-7&version=KJV",
+        "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."
+      ],
+      [
+        "2 Timothy 1:7",
+        "https://www.biblegateway.com/passage/?search=2%20Timothy%201%3A7&version=KJV",
+        "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind."
+      ]
+    ]
+  },
+  "Control / Surrender": {
+    "need": "Trust, patience, and help letting God lead the next step.",
+    "answer": "Practice surrender in one specific situation instead of trying to control everything.",
+    "scriptures": [
+      [
+        "Proverbs 3:5-6",
+        "https://www.biblegateway.com/passage/?search=Proverbs%203%3A5-6&version=KJV",
+        "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."
+      ],
+      [
+        "Matthew 6:33-34",
+        "https://www.biblegateway.com/passage/?search=Matthew%206%3A33-34&version=KJV",
+        "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you. Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof."
+      ]
+    ]
+  },
+  "Peace / Surrender / Shame": {
+    "need": "Calm, truth, and freedom from shame-based thinking.",
+    "answer": "Bring the thought to God and replace shame with truth and one next step.",
+    "scriptures": [
+      [
+        "Romans 8:1",
+        "https://www.biblegateway.com/passage/?search=Romans%208%3A1&version=KJV",
+        "There is therefore now no condemnation to them which are in Christ Jesus, who walk not after the flesh, but after the Spirit."
+      ],
+      [
+        "Philippians 4:6-7",
+        "https://www.biblegateway.com/passage/?search=Philippians%204%3A6-7&version=KJV",
+        "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."
+      ]
+    ]
+  },
+  "Anger / Fear / Control": {
+    "need": "Pause, safety, and a slower response before words or actions do damage.",
+    "answer": "Attack the reaction pattern first: stop, breathe, pray, and get support.",
+    "scriptures": [
+      [
+        "James 1:19-20",
+        "https://www.biblegateway.com/passage/?search=James%201%3A19-20&version=KJV",
+        "Wherefore, my beloved brethren, let every man be swift to hear, slow to speak, slow to wrath: For the wrath of man worketh not the righteousness of God."
+      ],
+      [
+        "Proverbs 15:1",
+        "https://www.biblegateway.com/passage/?search=Proverbs%2015%3A1&version=KJV",
+        "A soft answer turneth away wrath: but grievous words stir up anger."
+      ]
+    ]
+  },
+  "Safety and Comfort": {
+    "need": "Safety, calm, and a trusted helper.",
+    "answer": "Begin with safety and support before deeper work.",
+    "scriptures": [
+      [
+        "Psalm 46:1",
+        "https://www.biblegateway.com/passage/?search=Psalm%2046%3A1&version=KJV",
+        "God is our refuge and strength, a very present help in trouble."
+      ],
+      [
+        "Psalm 34:18",
+        "https://www.biblegateway.com/passage/?search=Psalm%2034%3A18&version=KJV",
+        "The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit."
+      ]
+    ]
+  },
+  "Peace and Surrender": {
+    "need": "Quiet, prayer, and a small surrendered next step.",
+    "answer": "Do not solve everything. Surrender the next step to God.",
+    "scriptures": [
+      [
+        "Proverbs 3:5-6",
+        "https://www.biblegateway.com/passage/?search=Proverbs%203%3A5-6&version=KJV",
+        "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."
+      ],
+      [
+        "Philippians 4:6-7",
+        "https://www.biblegateway.com/passage/?search=Philippians%204%3A6-7&version=KJV",
+        "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."
+      ]
+    ]
+  }
+};
+
+const commonScriptures = [
+  [
+    "Psalm 34:18",
+    "https://www.biblegateway.com/passage/?search=Psalm%2034%3A18&version=KJV",
+    "The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit."
+  ],
+  [
+    "Matthew 11:28-30",
+    "https://www.biblegateway.com/passage/?search=Matthew%2011%3A28-30&version=KJV",
+    "Come unto me, all ye that labour and are heavy laden, and I will give you rest. Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls. For my yoke is easy, and my burden is light."
+  ],
+  [
+    "1 Corinthians 10:13",
+    "https://www.biblegateway.com/passage/?search=1%20Corinthians%2010%3A13&version=KJV",
+    "There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape, that ye may be able to bear it."
+  ],
+  [
+    "Galatians 6:2",
+    "https://www.biblegateway.com/passage/?search=Galatians%206%3A2&version=KJV",
+    "Bear ye one another's burdens, and so fulfil the law of Christ."
+  ],
+  [
+    "Philippians 4:6-7",
+    "https://www.biblegateway.com/passage/?search=Philippians%204%3A6-7&version=KJV",
+    "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."
+  ],
+  [
+    "2 Timothy 1:7",
+    "https://www.biblegateway.com/passage/?search=2%20Timothy%201%3A7&version=KJV",
+    "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind."
+  ],
+  [
+    "James 1:19-20",
+    "https://www.biblegateway.com/passage/?search=James%201%3A19-20&version=KJV",
+    "Wherefore, my beloved brethren, let every man be swift to hear, slow to speak, slow to wrath: For the wrath of man worketh not the righteousness of God."
+  ],
+  [
+    "Proverbs 3:5-6",
+    "https://www.biblegateway.com/passage/?search=Proverbs%203%3A5-6&version=KJV",
+    "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."
+  ]
+];
+
+let lastTargets = [];
+
+function speakText(text){
+  if (!("speechSynthesis" in window)) {
+    alert("This browser does not support speech reading.");
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 0.86;
+  utterance.pitch = 1.0;
+  window.speechSynthesis.speak(utterance);
+}
+function stopSpeaking(){
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+}
+function speakQuestion(index){ speakText(questionsForVoice[index]); }
+function readAllQuestions(){ speakText(questionsForVoice.join("  ")); }
+function resetResults(){
+  document.getElementById("resultBox").classList.remove("show");
+  document.getElementById("targetGrid").innerHTML = "";
+  lastTargets = [];
+  stopSpeaking();
+}
+function collectScores(){
+  const form = document.getElementById("rthForm");
+  const data = new FormData(form);
+  const scores = {};
+  for (const val of data.values()){
+    const map = choiceScores[val] || {};
+    Object.entries(map).forEach(([key, pts]) => scores[key] = (scores[key] || 0) + pts);
+  }
+  const ranked = Object.entries(scores).sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0]));
+  return ranked.slice(0,2).map(x=>x[0]);
+}
+function cardHtml(target, index){
+  const info = targetInfo[target] || {
+    need:"Support and clarity.",
+    answer:"Take one small safe step today.",
+    scriptures:[["Psalm 46:1","https://www.biblegateway.com/passage/?search=Psalm%2046%3A1&version=KJV","God is our refuge and strength, a very present help in trouble."]]
+  };
+  const scriptureLines = info.scriptures.map(([label,url,text], scriptureIndex) => `
+    <div class="scripture-line">
+      <strong><a target="_blank" rel="noopener" href="${url}">${label}</a></strong>
+      <button class="hear-scripture-btn" type="button" onclick="speakScripture(${index}, ${scriptureIndex})">🔊 Hear Scripture</button>
+      <span class="verse-text">${text}</span>
+    </div>`).join("");
+  return `<div class="target">
+    <span class="badge">${index === 0 ? "Target 1" : "Target 2"}</span>
+    <h3>${target}</h3>
+    <p><strong>Need:</strong> ${info.need}</p>
+    <p><strong>Answer:</strong> ${info.answer}</p>
+    <div class="listen-row">
+      <button class="hear-result-btn" type="button" onclick="speakFinding(${index})">🔊 Hear This Finding</button>
+      <button class="hear-scripture-btn" type="button" onclick="speakTargetScriptures(${index})">🔊 Hear Scriptures</button>
+    </div>
+    <div class="scripture-list">${scriptureLines}</div>
+  </div>`;
+}
+document.getElementById("rthForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const top = collectScores();
+  const resultBox = document.getElementById("resultBox");
+  const targetGrid = document.getElementById("targetGrid");
+  const recommend = document.getElementById("recommendLine");
+  if (top.length < 2){
+    alert("Please answer all 4 questions.");
+    return;
+  }
+  lastTargets = top;
+  recommend.textContent = `I recommend targeting these 2 areas first: ${top[0]} and ${top[1]}.`;
+  targetGrid.innerHTML = top.map(cardHtml).join("");
+  resultBox.classList.add("show");
+  setTimeout(()=>resultBox.scrollIntoView({behavior:"smooth", block:"start"}), 80);
+});
+function speakFinding(index){
+  const target = lastTargets[index];
+  if (!target) { speakText("Please complete the four questions first."); return; }
+  const info = targetInfo[target];
+  speakText(`${index === 0 ? "Target one" : "Target two"}. ${target}. Need: ${info.need} Answer: ${info.answer}`);
+}
+function speakScripture(targetIndex, scriptureIndex){
+  const target = lastTargets[targetIndex];
+  if (!target) { speakText("Please complete the four questions first."); return; }
+  const item = targetInfo[target].scriptures[scriptureIndex];
+  speakText(`${item[0]}. ${item[2]}`);
+}
+function speakTargetScriptures(index){
+  const target = lastTargets[index];
+  if (!target) { speakText("Please complete the four questions first."); return; }
+  const info = targetInfo[target];
+  const text = info.scriptures.map(item => `${item[0]}. ${item[2]}`).join(" ");
+  speakText(`Scriptures for ${target}. ${text}`);
+}
+function speakResults(){
+  const line = document.getElementById("recommendLine").textContent || "Please complete the four questions first.";
+  speakText(line);
+}
+function speakFullResults(){
+  if (!lastTargets.length) { speakText("Please complete the four questions first."); return; }
+  const line = document.getElementById("recommendLine").textContent;
+  const pieces = [line];
+  lastTargets.forEach((target, index) => {
+    const info = targetInfo[target];
+    pieces.push(`${index === 0 ? "Target one" : "Target two"}. ${target}. Need: ${info.need} Answer: ${info.answer}`);
+    pieces.push(`Scriptures for ${target}.`);
+    info.scriptures.forEach(item => pieces.push(`${item[0]}. ${item[2]}`));
+  });
+  pieces.push("Next simple step. Choose one safe person, group leader, sponsor, pastor, mentor, or counselor to talk with about the first target area.");
+  pieces.push("Keep it gentle. Do not try to fix everything today. This is the first step on the Road to Healing, not the whole journey.");
+  speakText(pieces.join(" "));
+}
+function speakCommonScriptureHelp(){
+  speakText(commonScriptures.map(item => `${item[0]}. ${item[2]}`).join(" "));
+}
+</script>
+
+<section id="songs" style="max-width:1100px;margin:26px auto;padding:18px;">
+  <div style="background:#fffdf7;border:2px solid #c49a3a;border-radius:22px;padding:18px;box-shadow:0 10px 30px rgba(59,36,23,.16);">
+    <h2 style="margin-top:0;color:#3b2417;">Songs of Healing — 28 Spoken-Word Suno Scripts</h2>
+    <p><strong>Use:</strong> Copy one song at a time into Suno. Format is LYRICS first, STYLE second. Song Name is the final line inside STYLE.</p>
+    <p><button type="button" onclick="copyAllSongs()" style="background:#3b2417;color:white;border:0;border-radius:999px;padding:12px 16px;font-weight:800;">Copy All Songs Text</button>
+       <button type="button" onclick="document.getElementById('songsText').select()" style="background:#c49a3a;color:#3b2417;border:0;border-radius:999px;padding:12px 16px;font-weight:800;">Select Text</button></p>
+    <textarea id="songsText" style="width:100%;min-height:520px;border:2px solid #c49a3a;border-radius:16px;padding:14px;font-size:15px;line-height:1.45;font-family:Consolas,monospace;background:#fff9ed;">LPM RTH - Road to Healing
+Songs of Healing — Spoken Final Style v3
+
+Production rule used in this packet:
+- Spoken-word only, not sung.
+- Firm clear voice, with [Voice choice: Male / Female] option in the style.
+- Background music extremely quiet and barely heard.
+- No scriptures spoken or sung for this series.
+- No long instrumental background moments.
+- Only brief soft acoustic guitar markers/interludes of about 3 seconds.
+- Ending line for every song: God is with us for each small step, starting today.
+- End with a 2-second soft exit sound.
+- Suno copy format is LYRICS first, STYLE second, with Song Name at the end of STYLE.
+
+==============================================================================
+01A — Room to Breathe
+RTH Finding Area: Past Pain, Rejection, and Grief
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+What happened to you matters.
+It may still echo in your thoughts,
+in your body,
+in the way you trust,
+and in the way you pull back when life gets too close.
+
+Past pain, rejection, and grief can make a person feel like they have to stay guarded all the time.
+But guarded is not the same as healed.
+And silence is not the same as peace.
+
+You do not have to explain everything today.
+You do not have to fix your whole life today.
+The first need is simple:
+room to breathe,
+room to tell the truth,
+and one safe step toward healing.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+If your heart has been carrying old pain,
+you may need a safe person,
+a safe place,
+and a slower pace.
+Not pressure.
+Not shame.
+Not someone telling you to hurry up and get over it.
+
+Healing begins when the hurt can finally be named without letting it name you.
+You are not only what happened.
+You are not only who left.
+You are not only what broke.
+There is more to your story than the pain.
+
+The encouragement for today is this:
+start small,
+stay honest,
+and let help come close enough to matter.
+One clear step is still a real step.
+One honest sentence is still movement.
+One safe conversation can open a door that pain kept closed for years.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can meet you on that road as a guide,
+not forcing you,
+not rushing you,
+but walking near enough to help you take the next step.
+Even if trust feels hard,
+even if prayer feels distant,
+even if you are not sure what you believe today,
+you can still begin with this:
+I need room to breathe.
+I need help that does not bruise.
+I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Room to Breathe
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+01B — One Safe Step
+RTH Finding Area: Past Pain, Rejection, and Grief
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have stood where you are standing.
+Not with the same details,
+not with the same memories,
+but with the same heavy feeling that healing might be too far away.
+
+Some of them started with anger.
+Some started with silence.
+Some started with one sentence they could barely say out loud.
+And still, a path began.
+
+Healing did not come because they were strong every day.
+Healing began because they stopped carrying the whole weight alone.
+They found one safe person,
+one honest place,
+one next step.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Past pain can say, stay hidden.
+Rejection can say, do not trust anyone.
+Grief can say, nothing will feel steady again.
+But those are not the only voices allowed to speak.
+
+People have walked through deep loss and learned to breathe again.
+They have remembered what hurt,
+and still found a life beyond the wound.
+They have cried with others,
+asked for help,
+learned boundaries,
+and taken healing one small step at a time.
+
+That can be your road too.
+Not rushed.
+Not perfect.
+Not forced.
+Just one careful movement toward what is safe, true, and life-giving.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can be a quiet guide on that road,
+not demanding performance,
+not asking you to pretend,
+but staying near while you learn to trust the next step.
+
+Today does not have to solve everything.
+Today can simply say:
+I am still here.
+I can ask for help.
+I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: One Safe Step
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+02A — Still Worth Holding
+RTH Finding Area: Rejection and Abandonment
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Rejection and abandonment can make a person question their own worth.
+It can feel like every goodbye proves the same painful story: maybe I am too much, or maybe I am not enough.
+But someone leaving is not the same as your value disappearing.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+The first need is to separate what happened from who you are.
+You may need steady reassurance, safe connection, and time to learn that closeness does not always have to end in loss.
+Healing begins when you stop treating abandonment as proof that you are unlovable.
+You are allowed to move slowly. You are allowed to check for safety. You are allowed to need kindness without apologizing for it.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can be a guide beside the place where people failed you, helping you notice the difference between old fear and present safety.
+Today, the work is not to chase every person who leaves. The work is to come back to the truth: I still matter. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Still Worth Holding
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+02B — Not Left Alone
+RTH Finding Area: Rejection and Abandonment
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Many people have carried the ache of being left, forgotten, or replaced.
+They did not heal by pretending it never hurt. They healed by learning to stop building their identity on who stayed and who walked away.
+Some began with one safe friendship. Some began with counseling. Some began by writing down the story they were afraid to say.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+One step at a time, they learned that old abandonment does not have to control every new relationship.
+They learned to pause before panic. They learned to ask for truth before assuming rejection. They learned to receive support without clinging to fear.
+You can learn that too. Not all at once. Not under pressure. But steadily.
+God can be a steady presence while trust is being rebuilt, a guide who does not shame your fear, but helps you walk through it.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today can be simple: I can stay present. I can choose one safe connection. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Not Left Alone
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+03A — No Rushing the Release
+RTH Finding Area: Forgiveness, Grief, and Healing
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Forgiveness, grief, and healing can get tangled together in a way that feels confusing.
+You may feel pressure to forgive before you have even been allowed to grieve.
+You may wonder if letting go means saying the hurt was acceptable. It does not.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+The first need is honest grief with clear truth. What happened mattered. What was lost mattered. Your healing matters too.
+Forgiveness is not pretending. It is not handing unsafe people access to your life. It is not skipping the pain.
+It is a slow release of the poison that keeps hurting you inside.
+You may need time, support, boundaries, and permission to move at a careful pace.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide this process gently, helping you tell the truth without living forever inside the wound.
+Today, you do not have to force a feeling. You can begin with honesty. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: No Rushing the Release
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+03B — The Slow Release
+RTH Finding Area: Forgiveness, Grief, and Healing
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have walked the road between grief and forgiveness, and many started unsure they could ever move forward.
+Some were angry. Some were numb. Some felt guilty for still hurting.
+Their first step was not a perfect spiritual moment. It was usually a small truthful one.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+They said, this hurt me. They said, I need help. They said, I am not ready to pretend.
+Over time, safe support helped them separate forgiveness from denial, and boundaries from bitterness.
+They learned that healing can include grief, truth, distance, and peace at the same time.
+You can walk that kind of path too, one honest step at a time.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can be a guide in the slow release, steady enough to hold what you cannot fix today.
+You can begin without rushing. You can begin by saying: I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: The Slow Release
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+04A — Safe Connection Again
+RTH Finding Area: Relationship Wounds
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Relationship wounds can make closeness feel dangerous.
+A person can want love and still brace for disappointment, criticism, betrayal, or control.
+When trust has been damaged, the need is not to jump back into closeness quickly. The need is safe connection again.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+That may mean better boundaries, slower trust, clearer words, and people who respect your no.
+You are not weak for needing safety. You are not difficult because your heart learned caution.
+Healing begins when you stop calling unhealthy patterns normal just because they are familiar.
+You can learn what respect feels like. You can learn what mutual care sounds like. You can learn to stop earning love through fear.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide you toward relationships that do not require you to disappear.
+Today the first step can be small: I need safe connection. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Safe Connection Again
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+04B — Learning Trust Slowly
+RTH Finding Area: Relationship Wounds
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Many people have learned to trust again after relationships left them guarded.
+They did not become open overnight. They practiced slowly, with people who proved safe over time.
+Some learned to say no without explaining for an hour. Some learned to ask for what they needed. Some learned to stop chasing people who only brought confusion.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Healing grew through repeated safe moments, not one dramatic change.
+They learned that love should not require constant anxiety. They learned that peace is information too.
+You can learn those things in your own time.
+God can guide the rebuilding, helping you notice what is healthy, what is unsafe, and what is simply old fear speaking loudly.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today does not require a big decision. It can simply be: I will move toward safety. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Learning Trust Slowly
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+05A — Stop the Loop
+RTH Finding Area: Repeating Behavior and Accountability
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Repeating behavior can feel discouraging because the pattern starts to look stronger than the promise to change.
+You may tell yourself, this time will be different, and then find yourself back in the same place again.
+The need is not more shame. Shame often feeds the loop.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+The need is honest accountability, clear triggers, and a plan that works before the pressure rises.
+You are not helped by hiding. You are helped by bringing the pattern into the light with someone safe and steady.
+Start by naming what happens before the behavior, not only what happens after.
+Notice the time, the feeling, the person, the thought, the place, and the excuse that opens the door.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide you without crushing you, helping you choose truth before the loop takes over.
+Today can be one honest admission and one safer plan. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Stop the Loop
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+05B — A New Pattern Can Start
+RTH Finding Area: Repeating Behavior and Accountability
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have been trapped in repeating patterns and still found a new way to live.
+They did not change because shame finally became loud enough. They changed when honesty, support, and structure became stronger than secrecy.
+They learned their warning signs. They called someone before the fall. They removed access to the old path. They made the next right step easier to take.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Progress was not perfect. But progress was real.
+A new pattern can start when the old one is interrupted early.
+You can build that kind of interruption too: a phone call, a boundary, a different route, a written plan, a safe person who knows the truth.
+God can guide you toward accountability that restores instead of condemns.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today does not need a speech. It needs one honest action. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: A New Pattern Can Start
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+06A — Come Back Slowly
+RTH Finding Area: Isolation and Escape Pattern
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Isolation and escape can feel like protection at first.
+When life is too much, pulling away may seem safer than being seen.
+But over time, hiding can make pain louder and hope quieter.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+The need is not to force yourself into a crowd. The need is to come back slowly.
+One message. One check-in. One honest sentence. One safe place where you do not have to perform.
+Escaping may numb the moment, but connection helps carry the weight.
+You are not bad because you withdrew. You may have been trying to survive.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Now the next healing step is to let one safe support know where you really are.
+God can be a quiet guide out of hiding, not shaming you, just calling you toward life. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Come Back Slowly
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+06B — Out of Hiding
+RTH Finding Area: Isolation and Escape Pattern
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have disappeared into isolation and slowly found their way back.
+They started with a small opening, not a full explanation.
+A short text. A support meeting. A walk with someone steady. A decision to stop pretending they were fine.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+At first, connection felt risky. Then it became relief.
+They learned that being seen by a safe person is different from being judged by unsafe people.
+They learned that escape does not have to be the only way to survive a hard feeling.
+You can learn that too, one careful return at a time.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide the return without demanding that you move faster than your heart can bear.
+Today, just open one safe door. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Out of Hiding
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+07A — A Clear Line Can Heal
+RTH Finding Area: Boundaries and Accountability
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Boundaries can feel uncomfortable when you are used to pleasing, fixing, or absorbing what belongs to someone else.
+Accountability can feel scary when you are used to hiding mistakes or carrying shame alone.
+But both are gifts when they are used with care.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+The need is a clear line and a safe witness.
+A boundary says, this is what I can do, and this is what I cannot carry.
+Accountability says, I will not walk in secrecy where the old pattern grows stronger.
+You do not need harsh control. You need honest structure that protects healing.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide you toward truth with steadiness, helping you choose what is healthy without hatred or fear.
+Today, one clear line may be the beginning of peace. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: A Clear Line Can Heal
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+07B — Protected Enough to Heal
+RTH Finding Area: Boundaries and Accountability
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Many people have healed by learning boundaries they were never taught.
+At first, it felt selfish. Then they realized boundaries were not walls against love; they were doors with wisdom.
+They learned to say no without panic. They learned to tell the truth before the crisis. They learned to invite accountability before secrecy became dangerous.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Their lives did not become perfect. But they became more honest and more protected.
+Support helped them keep the line when guilt tried to erase it.
+You can learn that same steady rhythm: truth, support, boundary, next step.
+God can guide you without pushing you into fear or control, helping you protect what healing is trying to grow.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today, choose one safe boundary or one accountable conversation. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Protected Enough to Heal
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+08A — Interrupt the Pull
+RTH Finding Area: Active Habit Pattern
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+An active habit pattern can feel like it grabs the steering wheel before you have time to think.
+The pull may come through stress, loneliness, boredom, anger, shame, or pain you do not want to feel.
+The need is immediate support and a smaller first step than your shame suggests.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Do not wait until you feel strong. Build a plan for the moment when you feel weak.
+Name the trigger. Move your body. Change the setting. Contact a safe person. Put distance between you and the habit.
+This is not about proving you are better. It is about choosing one interruption that keeps you safer today.
+You are not beyond help because the habit is active. Active means the next step matters now.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide you in the urgent moment, helping you pause long enough to choose help instead of the old escape.
+Today, interrupt the pull. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Interrupt the Pull
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+08B — Help Before the Fall
+RTH Finding Area: Active Habit Pattern
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have faced active habits that felt stronger than their willpower.
+They found out that willpower alone was not enough, and that was not failure. It was information.
+They built outside support. They removed private access to the old pattern. They called before the fall instead of confessing only after it.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+They learned to treat urges like warning lights, not commands.
+Some days they took one hour at a time. Some days they asked someone to sit with them until the pull passed.
+That kind of help can work because healing is stronger when it is shared.
+God can guide the rescue step without shaming the struggle, pointing you toward people and choices that help you stay alive to hope.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today, ask for help before the pattern finishes its sentence. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Help Before the Fall
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+09A — Calm the Alarm
+RTH Finding Area: Anxiety, Anger, and Control
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Anxiety, anger, and control often grow from an inner alarm that will not quiet down.
+Anxiety says, something bad is coming. Anger says, I must protect myself now. Control says, if I manage everything, maybe I will be safe.
+The need is to calm the alarm before it runs the whole day.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Start with the body. Breathe slowly. Unclench your hands. Lower your voice. Step away before words become damage.
+Then name the real fear underneath the reaction.
+You are not wrong for wanting safety. But control and anger cannot give the peace they promise.
+A calmer step can protect you better than a louder one.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide you into steadiness without demanding instant calm, helping you pause before the alarm becomes your leader.
+Today, I can slow down. I can name the fear. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Calm the Alarm
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+09B — From Reaction to Response
+RTH Finding Area: Anxiety, Anger, and Control
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have lived with anxiety, anger, and control driving their reactions.
+They did not become peaceful by pretending nothing bothered them. They learned to notice the alarm earlier.
+They practiced stepping away before speaking. They used support before the argument. They learned to say, I am scared, instead of only sounding angry.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+One step at a time, reaction became response.
+They still had hard days. But the hard day did not have to become harm.
+You can learn the same pause, the same repair, the same honest naming of what is underneath.
+God can guide that pause, helping you find a steadier way when your emotions feel too loud.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today, before control takes over, choose one calmer response. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: From Reaction to Response
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+10A — Loosen the Grip
+RTH Finding Area: Control and Surrender
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Control can look strong on the outside while fear is doing the work underneath.
+You may try to manage people, outcomes, schedules, conversations, or every possible risk because uncertainty feels unsafe.
+The need is not to become careless. The need is to loosen the grip where control is costing your peace.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Ask one question: what is mine to do, and what am I trying to carry that does not belong to me?
+Surrender does not mean giving up. It means putting down what your hands were never meant to hold alone.
+You can still make wise choices. You can still set boundaries. You can still take responsibility for your part.
+But you do not have to control everything to be safe.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide the release slowly, helping you trade pressure for trust one small decision at a time.
+Today, I can do my part and release one thing beyond my control. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Loosen the Grip
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+10B — Held Without Holding Everything
+RTH Finding Area: Control and Surrender
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have lived exhausted from trying to hold everything together.
+They thought surrender meant losing control of their lives, but they learned it was often the beginning of peace.
+They made lists of what was theirs and what was not. They stopped rescuing where rescuing was hurting. They let safe people help carry decisions.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Slowly, their hands opened.
+Not all at once. Not without fear. But enough to breathe.
+They discovered that responsibility is healthier when it has limits.
+You can learn that too. You can be faithful to your part without becoming responsible for everyone else’s part.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide you into that steadier place, where you are held even while you stop holding everything.
+Today, release one burden that is not yours. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Held Without Holding Everything
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+11A — Lay Shame Down
+RTH Finding Area: Peace, Surrender, and Shame
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Shame can make peace feel undeserved.
+It says, you should have known better. You should have done better. You should hide until you are cleaner, stronger, or easier to love.
+The need is to separate guilt from shame.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Guilt can point to something that needs repair. Shame tries to name you as the problem.
+You may need honest confession, safe support, and a way to make amends without destroying yourself.
+Surrender begins when you stop arguing with shame as though it has the final word.
+Peace grows when truth is held with mercy, not denial and not self-hatred.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide you toward repair without rejection, helping you face what is real while still believing healing is possible.
+Today, I can tell the truth without becoming the shame. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Lay Shame Down
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+11B — Mercy Can Walk With Truth
+RTH Finding Area: Peace, Surrender, and Shame
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have carried shame so long they thought it was their identity.
+They began to heal when they found safe truth, not harsh exposure.
+They learned to say, I did something wrong, without saying, I am worthless.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+They repaired what they could. They accepted help where they could not repair alone. They stopped letting shame drive them back into hiding.
+Peace came slowly, often through repeated moments of mercy and accountability together.
+You can walk that path too. Not by excusing everything. Not by condemning yourself forever. By choosing truth with support.
+God can guide that kind of healing, where correction does not erase compassion.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today, mercy and truth can both be present. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Mercy Can Walk With Truth
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+12A — Under the Anger
+RTH Finding Area: Anger, Fear, and Control
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Anger often stands at the door while fear is hiding behind it.
+Control may step in next, trying to make sure nobody gets too close, too loud, too careless, or too powerful.
+The need is to slow down enough to hear what the anger is protecting.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Ask: what am I afraid will happen? What felt unsafe? What boundary needs to be spoken before damage is done?
+Anger is information, but it should not be the driver.
+You may need space, cooling time, repair skills, and someone safe enough to help you sort the fear from the reaction.
+You are not trapped inside the first emotion that rises.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide you toward a steadier strength, one that protects without wounding and speaks truth without losing control.
+Today, I can pause before I harm. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Under the Anger
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+12B — A Stronger Kind of Calm
+RTH Finding Area: Anger, Fear, and Control
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have been known for anger when fear was the deeper wound.
+They learned that calm was not weakness. Calm became a stronger kind of protection.
+They practiced leaving the room before the words got dangerous. They named the fear under the anger. They repaired quickly when they caused harm.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+They learned boundaries that did not require intimidation.
+It took practice, support, and humility. But change became visible one response at a time.
+You can learn a stronger kind of calm too.
+God can guide you toward courage that does not have to control, and honesty that does not have to explode.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today, choose the pause. Choose repair. Choose help. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: A Stronger Kind of Calm
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+13A — Safe Enough to Begin
+RTH Finding Area: Safety and Comfort
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+When someone has lived with fear, chaos, or deep discomfort, safety and comfort are not small needs.
+They are the ground where healing can begin.
+You may need a safer room, a safer person, a safer rhythm, or a clearer plan for moments when you feel overwhelmed.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Comfort does not mean avoiding all hard things. It means your nervous system gets enough steadiness to face the hard thing without shutting down.
+The first need is to create a small pocket of safety today.
+A quiet place. A support call. A written plan. A boundary. A breath. A simple next action.
+You are not childish for needing comfort. You are human.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide you gently toward safety that helps your heart settle and your mind think clearly again.
+Today, I can choose one safe support. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Safe Enough to Begin
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+13B — Small Places of Safety
+RTH Finding Area: Safety and Comfort
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have started healing by building small places of safety first.
+They did not begin with big speeches or dramatic breakthroughs. They began with a chair, a walk, a phone number, a meeting, a trusted person, a calmer routine.
+Little by little, their bodies learned that every moment was not an emergency.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+They still faced hard truths, but they faced them with support instead of panic.
+That is a real path. It is not weak. It is wise.
+You can build your own small place of safety today, one practical step at a time.
+God can guide that process quietly, helping you notice what brings steadiness and what keeps reopening fear.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today, choose one safe place, one safe person, or one safe plan. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: Small Places of Safety
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+14A — The Next Quiet Yes
+RTH Finding Area: Peace and Surrender
+Song Purpose: Need + Encouragement
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Peace and surrender can sound far away when your mind is busy and your heart is tired.
+You may not feel ready to release everything. You may only be ready to loosen one clenched place inside you.
+That is enough for a beginning.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+The need is a quieter yes to what is healthy today.
+Yes to breathing. Yes to support. Yes to telling the truth. Yes to not fighting every battle in your own strength.
+Surrender is not disappearing. It is choosing not to be ruled by fear, shame, pressure, or the need to control every outcome.
+Peace often starts small, like a breath you finally let yourself take.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+God can guide that breath, not forcing your hands open, but helping you release one burden at a time.
+Today, I can make one quiet yes toward healing. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: The Next Quiet Yes
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+
+==============================================================================
+14B — One Burden Lighter
+RTH Finding Area: Peace and Surrender
+Song Purpose: Others Have Walked This Path
+
+SUNO LYRICS
+[Very soft acoustic guitar chord intro, barely heard, about 3 seconds. Begin speaking immediately.]
+
+[Spoken - firm clear voice, voice forward]
+Others have walked toward peace while still carrying heavy questions.
+They did not surrender because life became easy. They surrendered because carrying everything alone became too costly.
+They learned to put one burden down, then another. They asked for help. They chose silence before reaction. They let trusted people remind them what was true.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Peace came in pieces first.
+A calmer morning. A repaired conversation. A decision not to chase the old fear. One burden lighter.
+You can receive peace in pieces too. You do not have to force a perfect feeling.
+God can guide the next quiet step, steady enough for today, close enough for the burden in your hands.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Begin speaking immediately.]
+
+Today, I can release one thing and receive one steady breath. I need one safe step forward.
+
+[Very soft acoustic guitar interlude, barely heard, about 3 seconds. Then final words.]
+
+[Final Spoken Words - calm, steady, reverent]
+God is with us for each small step, starting today.
+
+[Soft exit sound - one very quiet acoustic guitar chord fading out, about 2 seconds]
+
+SUNO STYLE
+Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
+Song Name: One Burden Lighter
+
+MP3 INTEGRATION PLACEHOLDER
+mp3_url: PENDING_AFTER_SUNO_CREATION
+</textarea>
+  </div>
+</section>
+<script>
+function copyAllSongs(){
+  var t=document.getElementById('songsText');
+  t.focus();t.select();
+  try{document.execCommand('copy'); alert('Songs text copied.');}
+  catch(e){alert('If copy does not work, use Select Text, then Ctrl+C.');}
+}
+</script>
+
+</body>
+</html>
