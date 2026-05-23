@@ -1000,8 +1000,307 @@ function speakCommonScriptureHelp(){
     <p><strong>Use:</strong> Copy one song at a time into Suno. Format is LYRICS first, STYLE second. Song Name is the final line inside STYLE.</p>
     <p><button type="button" onclick="copyAllSongs()" style="background:#3b2417;color:white;border:0;border-radius:999px;padding:12px 16px;font-weight:800;">Copy All Songs Text</button>
        <button type="button" onclick="document.getElementById('songsText').select()" style="background:#c49a3a;color:#3b2417;border:0;border-radius:999px;padding:12px 16px;font-weight:800;">Select Text</button></p>
-    <textarea id="songsText" style="width:100%;min-height:520px;border:2px solid #c49a3a;border-radius:16px;padding:14px;font-size:15px;line-height:1.45;font-family:Consolas,monospace;background:#fff9ed;">LPM RTH - Road to Healing
-Songs of Healing — Spoken Final Style v3
+    
+<div class="songIndexCard" style="background:#fffdf7;border:2px solid #c49a3a;border-radius:20px;padding:16px;margin:16px 0;box-shadow:0 8px 22px rgba(59,36,23,.10);">
+  <h3 style="margin-top:0;color:#3b2417;">Song Tracking Index / MP3 Audio Plan</h3>
+  <p><strong>Owner note:</strong> This index is not meant to paste into Suno. It helps us track which songs belong to Hurts, Habits, or Hang-ups, which topic each song supports, and the future MP3 file name after Suno creation.</p>
+  <p><strong>New audio rule:</strong> The old line <code>mp3_url: PENDING_AFTER_SUNO_CREATION</code> has been removed from each song. MP3s are now tracked here as audio slots. After each Suno song is created, we will replace the status with the real MP3 link or uploaded audio file.</p>
+  <div style="overflow:auto;border-radius:14px;border:1px solid #ead39a;">
+    <table style="width:100%;border-collapse:collapse;min-width:980px;background:white;font-size:14px;">
+      <thead>
+        <tr style="background:#3b2417;color:#fff;">
+          <th style="padding:10px;text-align:left;">#</th><th style="padding:10px;text-align:left;">Readable Song Name</th><th style="padding:10px;text-align:left;">CR Lane</th><th style="padding:10px;text-align:left;">Finding Area</th><th style="padding:10px;text-align:left;">Related Topics</th><th style="padding:10px;text-align:left;">Purpose</th><th style="padding:10px;text-align:left;">Future MP3 File</th><th style="padding:10px;text-align:left;">Audio Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">01A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-ROOM-TO-BREATHE — Room to Breathe</strong></td>
+          <td style="padding:9px;">Hurts</td>
+          <td style="padding:9px;">Past Pain, Rejection, and Grief</td>
+          <td style="padding:9px;">Rejection, grief, emotional pain, unresolved past wounds</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-ROOM-TO-BREATHE.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">01B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-ONE-SAFE-STEP — One Safe Step</strong></td>
+          <td style="padding:9px;">Hurts</td>
+          <td style="padding:9px;">Past Pain, Rejection, and Grief</td>
+          <td style="padding:9px;">Rejection, grief, emotional pain, unresolved past wounds</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-ONE-SAFE-STEP.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">02A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-STILL-WORTH-HOLDING — Still Worth Holding</strong></td>
+          <td style="padding:9px;">Hurts</td>
+          <td style="padding:9px;">Rejection and Abandonment</td>
+          <td style="padding:9px;">Rejection, abandonment, belonging pain</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-STILL-WORTH-HOLDING.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">02B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-NOT-LEFT-ALONE — Not Left Alone</strong></td>
+          <td style="padding:9px;">Hurts</td>
+          <td style="padding:9px;">Rejection and Abandonment</td>
+          <td style="padding:9px;">Rejection, abandonment, belonging pain</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-NOT-LEFT-ALONE.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">03A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-NO-RUSHING-THE-RELEASE — No Rushing the Release</strong></td>
+          <td style="padding:9px;">Hurts / Hang-ups</td>
+          <td style="padding:9px;">Forgiveness, Grief, and Healing</td>
+          <td style="padding:9px;">Grief, bitterness, forgiveness, release</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-NO-RUSHING-THE-RELEASE.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">03B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-THE-SLOW-RELEASE — The Slow Release</strong></td>
+          <td style="padding:9px;">Hurts / Hang-ups</td>
+          <td style="padding:9px;">Forgiveness, Grief, and Healing</td>
+          <td style="padding:9px;">Grief, bitterness, forgiveness, release</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-THE-SLOW-RELEASE.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">04A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-SAFE-CONNECTION-AGAIN — Safe Connection Again</strong></td>
+          <td style="padding:9px;">Hurts</td>
+          <td style="padding:9px;">Relationship Wounds</td>
+          <td style="padding:9px;">Betrayal, divorce, abuse, dysfunctional family, trust wounds</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-SAFE-CONNECTION-AGAIN.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">04B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-LEARNING-TRUST-SLOWLY — Learning Trust Slowly</strong></td>
+          <td style="padding:9px;">Hurts</td>
+          <td style="padding:9px;">Relationship Wounds</td>
+          <td style="padding:9px;">Betrayal, divorce, abuse, dysfunctional family, trust wounds</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-LEARNING-TRUST-SLOWLY.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">05A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-STOP-THE-LOOP — Stop the Loop</strong></td>
+          <td style="padding:9px;">Habits</td>
+          <td style="padding:9px;">Repeating Behavior and Accountability</td>
+          <td style="padding:9px;">Repeating harmful behavior, accountability, pattern change</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-STOP-THE-LOOP.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">05B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-A-NEW-PATTERN-CAN-START — A New Pattern Can Start</strong></td>
+          <td style="padding:9px;">Habits</td>
+          <td style="padding:9px;">Repeating Behavior and Accountability</td>
+          <td style="padding:9px;">Repeating harmful behavior, accountability, pattern change</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-A-NEW-PATTERN-CAN-START.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">06A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-COME-BACK-SLOWLY — Come Back Slowly</strong></td>
+          <td style="padding:9px;">Habits</td>
+          <td style="padding:9px;">Isolation and Escape Pattern</td>
+          <td style="padding:9px;">Isolation, avoidance, withdrawal, hiding</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-COME-BACK-SLOWLY.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">06B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-OUT-OF-HIDING — Out of Hiding</strong></td>
+          <td style="padding:9px;">Habits</td>
+          <td style="padding:9px;">Isolation and Escape Pattern</td>
+          <td style="padding:9px;">Isolation, avoidance, withdrawal, hiding</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-OUT-OF-HIDING.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">07A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-A-CLEAR-LINE-CAN-HEAL — A Clear Line Can Heal</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Boundaries and Accountability</td>
+          <td style="padding:9px;">Codependency, people-pleasing, boundary confusion, control</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-A-CLEAR-LINE-CAN-HEAL.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">07B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-PROTECTED-ENOUGH-TO-HEAL — Protected Enough to Heal</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Boundaries and Accountability</td>
+          <td style="padding:9px;">Codependency, people-pleasing, boundary confusion, control</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-PROTECTED-ENOUGH-TO-HEAL.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">08A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-INTERRUPT-THE-PULL — Interrupt the Pull</strong></td>
+          <td style="padding:9px;">Habits</td>
+          <td style="padding:9px;">Active Habit Pattern</td>
+          <td style="padding:9px;">Addiction pulls, compulsive behavior, acting out, relapse risk</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-INTERRUPT-THE-PULL.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">08B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-HELP-BEFORE-THE-FALL — Help Before the Fall</strong></td>
+          <td style="padding:9px;">Habits</td>
+          <td style="padding:9px;">Active Habit Pattern</td>
+          <td style="padding:9px;">Addiction pulls, compulsive behavior, acting out, relapse risk</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-HELP-BEFORE-THE-FALL.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">09A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-CALM-THE-ALARM — Calm the Alarm</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Anxiety, Anger, and Control</td>
+          <td style="padding:9px;">Anxiety, anger, control, emotional alarm</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-CALM-THE-ALARM.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">09B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-FROM-REACTION-TO-RESPONSE — From Reaction to Response</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Anxiety, Anger, and Control</td>
+          <td style="padding:9px;">Anxiety, anger, control, emotional alarm</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-FROM-REACTION-TO-RESPONSE.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">10A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-LOOSEN-THE-GRIP — Loosen the Grip</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Control and Surrender</td>
+          <td style="padding:9px;">Control, perfectionism, lack of trust, over-responsibility</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-LOOSEN-THE-GRIP.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">10B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-HELD-WITHOUT-HOLDING-EVERYTHING — Held Without Holding Everything</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Control and Surrender</td>
+          <td style="padding:9px;">Control, perfectionism, lack of trust, over-responsibility</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-HELD-WITHOUT-HOLDING-EVERYTHING.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">11A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-LAY-SHAME-DOWN — Lay Shame Down</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Peace, Surrender, and Shame</td>
+          <td style="padding:9px;">Shame, false guilt, peace, surrender</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-LAY-SHAME-DOWN.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">11B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-MERCY-CAN-WALK-WITH-TRUTH — Mercy Can Walk With Truth</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Peace, Surrender, and Shame</td>
+          <td style="padding:9px;">Shame, false guilt, peace, surrender</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-MERCY-CAN-WALK-WITH-TRUTH.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">12A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-UNDER-THE-ANGER — Under the Anger</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Anger, Fear, and Control</td>
+          <td style="padding:9px;">Anger, fear, rage, control responses</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-UNDER-THE-ANGER.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">12B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-A-STRONGER-KIND-OF-CALM — A Stronger Kind of Calm</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Anger, Fear, and Control</td>
+          <td style="padding:9px;">Anger, fear, rage, control responses</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-A-STRONGER-KIND-OF-CALM.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">13A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-SAFE-ENOUGH-TO-BEGIN — Safe Enough to Begin</strong></td>
+          <td style="padding:9px;">Hurts</td>
+          <td style="padding:9px;">Safety and Comfort</td>
+          <td style="padding:9px;">Safety needs, trauma impact, fear, comfort-seeking</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-SAFE-ENOUGH-TO-BEGIN.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">13B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-SMALL-PLACES-OF-SAFETY — Small Places of Safety</strong></td>
+          <td style="padding:9px;">Hurts</td>
+          <td style="padding:9px;">Safety and Comfort</td>
+          <td style="padding:9px;">Safety needs, trauma impact, fear, comfort-seeking</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-SMALL-PLACES-OF-SAFETY.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fff9ed;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">14A</td>
+          <td style="padding:9px;"><strong>LPM-RTH-THE-NEXT-QUIET-YES — The Next Quiet Yes</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Peace and Surrender</td>
+          <td style="padding:9px;">Stress load, surrender, trust, carrying too much alone</td>
+          <td style="padding:9px;">Need + Encouragement</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-THE-NEXT-QUIET-YES.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+        <tr style="background:#fffdf7;border-bottom:1px solid #ead39a;">
+          <td style="padding:9px;font-weight:800;">14B</td>
+          <td style="padding:9px;"><strong>LPM-RTH-ONE-BURDEN-LIGHTER — One Burden Lighter</strong></td>
+          <td style="padding:9px;">Hang-ups</td>
+          <td style="padding:9px;">Peace and Surrender</td>
+          <td style="padding:9px;">Stress load, surrender, trust, carrying too much alone</td>
+          <td style="padding:9px;">Others Have Walked This Path</td>
+          <td style="padding:9px;font-family:Consolas,monospace;">LPM-RTH-ONE-BURDEN-LIGHTER.mp3</td>
+          <td style="padding:9px;">MP3 not created yet — add after Suno</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<textarea id="songsText" style="width:100%;min-height:520px;border:2px solid #c49a3a;border-radius:16px;padding:14px;font-size:15px;line-height:1.45;font-family:Consolas,monospace;background:#fff9ed;">LPM RTH - Road to Healing
+Songs of Healing — Spoken Final Style v4
+Song Naming Update: each song now uses LPM-RTH-HUMAN-TITLE plus the readable title.
 
 Production rule used in this packet:
 - Spoken-word only, not sung.
@@ -1015,7 +1314,7 @@ Production rule used in this packet:
 - Suno copy format is LYRICS first, STYLE second, with Song Name at the end of STYLE.
 
 ==============================================================================
-01A — Room to Breathe
+01A — LPM-RTH-ROOM-TO-BREATHE — Room to Breathe
 RTH Finding Area: Past Pain, Rejection, and Grief
 Song Purpose: Need + Encouragement
 
@@ -1087,13 +1386,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Room to Breathe
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-ROOM-TO-BREATHE — Room to Breathe
 ==============================================================================
-01B — One Safe Step
+01B — LPM-RTH-ONE-SAFE-STEP — One Safe Step
 RTH Finding Area: Past Pain, Rejection, and Grief
 Song Purpose: Others Have Walked This Path
 
@@ -1160,13 +1455,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: One Safe Step
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-ONE-SAFE-STEP — One Safe Step
 ==============================================================================
-02A — Still Worth Holding
+02A — LPM-RTH-STILL-WORTH-HOLDING — Still Worth Holding
 RTH Finding Area: Rejection and Abandonment
 Song Purpose: Need + Encouragement
 
@@ -1199,13 +1490,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Still Worth Holding
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-STILL-WORTH-HOLDING — Still Worth Holding
 ==============================================================================
-02B — Not Left Alone
+02B — LPM-RTH-NOT-LEFT-ALONE — Not Left Alone
 RTH Finding Area: Rejection and Abandonment
 Song Purpose: Others Have Walked This Path
 
@@ -1237,13 +1524,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Not Left Alone
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-NOT-LEFT-ALONE — Not Left Alone
 ==============================================================================
-03A — No Rushing the Release
+03A — LPM-RTH-NO-RUSHING-THE-RELEASE — No Rushing the Release
 RTH Finding Area: Forgiveness, Grief, and Healing
 Song Purpose: Need + Encouragement
 
@@ -1276,13 +1559,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: No Rushing the Release
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-NO-RUSHING-THE-RELEASE — No Rushing the Release
 ==============================================================================
-03B — The Slow Release
+03B — LPM-RTH-THE-SLOW-RELEASE — The Slow Release
 RTH Finding Area: Forgiveness, Grief, and Healing
 Song Purpose: Others Have Walked This Path
 
@@ -1315,13 +1594,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: The Slow Release
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-THE-SLOW-RELEASE — The Slow Release
 ==============================================================================
-04A — Safe Connection Again
+04A — LPM-RTH-SAFE-CONNECTION-AGAIN — Safe Connection Again
 RTH Finding Area: Relationship Wounds
 Song Purpose: Need + Encouragement
 
@@ -1354,13 +1629,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Safe Connection Again
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-SAFE-CONNECTION-AGAIN — Safe Connection Again
 ==============================================================================
-04B — Learning Trust Slowly
+04B — LPM-RTH-LEARNING-TRUST-SLOWLY — Learning Trust Slowly
 RTH Finding Area: Relationship Wounds
 Song Purpose: Others Have Walked This Path
 
@@ -1392,13 +1663,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Learning Trust Slowly
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-LEARNING-TRUST-SLOWLY — Learning Trust Slowly
 ==============================================================================
-05A — Stop the Loop
+05A — LPM-RTH-STOP-THE-LOOP — Stop the Loop
 RTH Finding Area: Repeating Behavior and Accountability
 Song Purpose: Need + Encouragement
 
@@ -1431,13 +1698,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Stop the Loop
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-STOP-THE-LOOP — Stop the Loop
 ==============================================================================
-05B — A New Pattern Can Start
+05B — LPM-RTH-A-NEW-PATTERN-CAN-START — A New Pattern Can Start
 RTH Finding Area: Repeating Behavior and Accountability
 Song Purpose: Others Have Walked This Path
 
@@ -1469,13 +1732,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: A New Pattern Can Start
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-A-NEW-PATTERN-CAN-START — A New Pattern Can Start
 ==============================================================================
-06A — Come Back Slowly
+06A — LPM-RTH-COME-BACK-SLOWLY — Come Back Slowly
 RTH Finding Area: Isolation and Escape Pattern
 Song Purpose: Need + Encouragement
 
@@ -1508,13 +1767,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Come Back Slowly
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-COME-BACK-SLOWLY — Come Back Slowly
 ==============================================================================
-06B — Out of Hiding
+06B — LPM-RTH-OUT-OF-HIDING — Out of Hiding
 RTH Finding Area: Isolation and Escape Pattern
 Song Purpose: Others Have Walked This Path
 
@@ -1547,13 +1802,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Out of Hiding
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-OUT-OF-HIDING — Out of Hiding
 ==============================================================================
-07A — A Clear Line Can Heal
+07A — LPM-RTH-A-CLEAR-LINE-CAN-HEAL — A Clear Line Can Heal
 RTH Finding Area: Boundaries and Accountability
 Song Purpose: Need + Encouragement
 
@@ -1586,13 +1837,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: A Clear Line Can Heal
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-A-CLEAR-LINE-CAN-HEAL — A Clear Line Can Heal
 ==============================================================================
-07B — Protected Enough to Heal
+07B — LPM-RTH-PROTECTED-ENOUGH-TO-HEAL — Protected Enough to Heal
 RTH Finding Area: Boundaries and Accountability
 Song Purpose: Others Have Walked This Path
 
@@ -1624,13 +1871,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Protected Enough to Heal
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-PROTECTED-ENOUGH-TO-HEAL — Protected Enough to Heal
 ==============================================================================
-08A — Interrupt the Pull
+08A — LPM-RTH-INTERRUPT-THE-PULL — Interrupt the Pull
 RTH Finding Area: Active Habit Pattern
 Song Purpose: Need + Encouragement
 
@@ -1663,13 +1906,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Interrupt the Pull
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-INTERRUPT-THE-PULL — Interrupt the Pull
 ==============================================================================
-08B — Help Before the Fall
+08B — LPM-RTH-HELP-BEFORE-THE-FALL — Help Before the Fall
 RTH Finding Area: Active Habit Pattern
 Song Purpose: Others Have Walked This Path
 
@@ -1701,13 +1940,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Help Before the Fall
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-HELP-BEFORE-THE-FALL — Help Before the Fall
 ==============================================================================
-09A — Calm the Alarm
+09A — LPM-RTH-CALM-THE-ALARM — Calm the Alarm
 RTH Finding Area: Anxiety, Anger, and Control
 Song Purpose: Need + Encouragement
 
@@ -1740,13 +1975,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Calm the Alarm
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-CALM-THE-ALARM — Calm the Alarm
 ==============================================================================
-09B — From Reaction to Response
+09B — LPM-RTH-FROM-REACTION-TO-RESPONSE — From Reaction to Response
 RTH Finding Area: Anxiety, Anger, and Control
 Song Purpose: Others Have Walked This Path
 
@@ -1778,13 +2009,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: From Reaction to Response
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-FROM-REACTION-TO-RESPONSE — From Reaction to Response
 ==============================================================================
-10A — Loosen the Grip
+10A — LPM-RTH-LOOSEN-THE-GRIP — Loosen the Grip
 RTH Finding Area: Control and Surrender
 Song Purpose: Need + Encouragement
 
@@ -1817,13 +2044,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Loosen the Grip
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-LOOSEN-THE-GRIP — Loosen the Grip
 ==============================================================================
-10B — Held Without Holding Everything
+10B — LPM-RTH-HELD-WITHOUT-HOLDING-EVERYTHING — Held Without Holding Everything
 RTH Finding Area: Control and Surrender
 Song Purpose: Others Have Walked This Path
 
@@ -1856,13 +2079,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Held Without Holding Everything
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-HELD-WITHOUT-HOLDING-EVERYTHING — Held Without Holding Everything
 ==============================================================================
-11A — Lay Shame Down
+11A — LPM-RTH-LAY-SHAME-DOWN — Lay Shame Down
 RTH Finding Area: Peace, Surrender, and Shame
 Song Purpose: Need + Encouragement
 
@@ -1895,13 +2114,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Lay Shame Down
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-LAY-SHAME-DOWN — Lay Shame Down
 ==============================================================================
-11B — Mercy Can Walk With Truth
+11B — LPM-RTH-MERCY-CAN-WALK-WITH-TRUTH — Mercy Can Walk With Truth
 RTH Finding Area: Peace, Surrender, and Shame
 Song Purpose: Others Have Walked This Path
 
@@ -1933,13 +2148,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Mercy Can Walk With Truth
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-MERCY-CAN-WALK-WITH-TRUTH — Mercy Can Walk With Truth
 ==============================================================================
-12A — Under the Anger
+12A — LPM-RTH-UNDER-THE-ANGER — Under the Anger
 RTH Finding Area: Anger, Fear, and Control
 Song Purpose: Need + Encouragement
 
@@ -1972,13 +2183,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Under the Anger
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-UNDER-THE-ANGER — Under the Anger
 ==============================================================================
-12B — A Stronger Kind of Calm
+12B — LPM-RTH-A-STRONGER-KIND-OF-CALM — A Stronger Kind of Calm
 RTH Finding Area: Anger, Fear, and Control
 Song Purpose: Others Have Walked This Path
 
@@ -2010,13 +2217,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: A Stronger Kind of Calm
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-A-STRONGER-KIND-OF-CALM — A Stronger Kind of Calm
 ==============================================================================
-13A — Safe Enough to Begin
+13A — LPM-RTH-SAFE-ENOUGH-TO-BEGIN — Safe Enough to Begin
 RTH Finding Area: Safety and Comfort
 Song Purpose: Need + Encouragement
 
@@ -2049,13 +2252,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Safe Enough to Begin
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-SAFE-ENOUGH-TO-BEGIN — Safe Enough to Begin
 ==============================================================================
-13B — Small Places of Safety
+13B — LPM-RTH-SMALL-PLACES-OF-SAFETY — Small Places of Safety
 RTH Finding Area: Safety and Comfort
 Song Purpose: Others Have Walked This Path
 
@@ -2087,13 +2286,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: Small Places of Safety
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-SMALL-PLACES-OF-SAFETY — Small Places of Safety
 ==============================================================================
-14A — The Next Quiet Yes
+14A — LPM-RTH-THE-NEXT-QUIET-YES — The Next Quiet Yes
 RTH Finding Area: Peace and Surrender
 Song Purpose: Need + Encouragement
 
@@ -2126,13 +2321,9 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: The Next Quiet Yes
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-
+Song Name: LPM-RTH-THE-NEXT-QUIET-YES — The Next Quiet Yes
 ==============================================================================
-14B — One Burden Lighter
+14B — LPM-RTH-ONE-BURDEN-LIGHTER — One Burden Lighter
 RTH Finding Area: Peace and Surrender
 Song Purpose: Others Have Walked This Path
 
@@ -2164,11 +2355,7 @@ God is with us for each small step, starting today.
 
 SUNO STYLE
 Spoken-word only. Do not sing. Use a firm, clear adult male voice speaking with calm authority, warmth, and clarity. [Voice choice: Male / Female]. The spoken voice must stay forward and easy to hear at all times. Background music should be extremely quiet and barely heard under the spoken voice. No choir. No organ. No church-service feel. No sung chorus. No long instrumental gaps. No musical swelling between sections. Use only brief, soft acoustic guitar chord markers/interludes of about 3 seconds where noted. Begin speaking immediately after each brief chord/interlude. Keep the pace steady and conversational with short natural breaths only. Topic-focused healing conversation. God is introduced gently as a guide and steady presence, not pressure. No scripture section. No scriptures spoken or sung. Near the end, after the words “I need one safe step forward,” use only a brief 3-second soft guitar interlude, then the final spoken words: “God is with us for each small step, starting today.” End with one very quiet 2-second acoustic guitar exit sound. Target total length: about 2:20 to 2:45.
-Song Name: One Burden Lighter
-
-MP3 INTEGRATION PLACEHOLDER
-mp3_url: PENDING_AFTER_SUNO_CREATION
-</textarea>
+Song Name: LPM-RTH-ONE-BURDEN-LIGHTER — One Burden Lighter</textarea>
   </div>
 </section>
 <script>
